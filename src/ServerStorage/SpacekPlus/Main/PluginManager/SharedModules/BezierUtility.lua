@@ -71,7 +71,7 @@ function Bezier:GetHelixControlPoints(endpoint: BasePart, includeRoll: boolean, 
         roll = 0
     end
 
-    local startCFrame = (cf * cf.Rotation:Inverse()) * CFrame.fromOrientation(pitch, yaw, roll)
+    local startCFrame = CFrame.new(cf.Position) * CFrame.fromOrientation(pitch, yaw, roll)
     local points
 
     if angle == 0 then
@@ -85,7 +85,7 @@ function Bezier:GetHelixControlPoints(endpoint: BasePart, includeRoll: boolean, 
         }
     else
         radius = (1/math.abs(angle)) * radius
-        points = Bezier:GetRelativeCurveControlPoints(cf, "zAxis", radius, angle)
+        points = Bezier:GetRelativeCurveControlPoints(startCFrame, "zAxis", radius, angle)
     end
 
     local heightDiff = height/4
