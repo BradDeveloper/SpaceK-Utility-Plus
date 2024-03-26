@@ -1,0 +1,17 @@
+{
+    "robloxLsp.workspace.maxPreload": 1010,
+    "robloxLsp.misc.serviceAutoImport": true,
+    "robloxLsp.workspace.loadRequiredFiles": true,
+    "robloxLsp.workspace.rojoProjectFile": "default",
+    "robloxLsp.intelliSense.autoDetectLibraries": false,
+    "robloxLsp.diagnostics.workspaceRate": 50,
+    "robloxLsp.diagnostics.workspaceDelay": -1,
+    "robloxLsp.diagnostics.disable": [
+        "undefined-type",
+        "trailing-space"
+    ],
+    "editor.accessibilitySupport": "off",
+    "robloxLsp.diagnostics.globals": [
+        "buffer"
+    ]
+}
