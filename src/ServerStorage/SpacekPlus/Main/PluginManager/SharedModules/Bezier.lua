@@ -1,5 +1,5 @@
 ---@diagnostic disable: undefined-type
---@Brad_Devleoper
+--@Brad_Developer
 --De Casteljau's Algorithm Implementation
 local Bezier = {__type = "bezier"}
 
