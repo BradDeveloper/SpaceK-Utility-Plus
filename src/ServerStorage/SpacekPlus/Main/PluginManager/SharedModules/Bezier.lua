@@ -29,7 +29,6 @@ local function getFactorial(n: number): number
 end
 
 local function linearBezier(self: Bezier, t: number): Vector3
-	assert(t >= 0 and t <= 1, "0 <= t <= 1 False")
 	local p = self.Points
 	return p[1]:Lerp(p[2],t)
 end
@@ -40,13 +39,11 @@ local function quadraticBezier(self: Bezier, t: number): Vector3
 end
 
 local function cubicBezier(self: Bezier, t: number): Vector3
-	assert(t >= 0 and t <= 1, "0 <= t <= 1 False")
 	local p = self.Points
 	return (1-t)^3*p[1]+3*(1-t)^2*t*p[2]+3*(1-t)*t^2*p[3]+t^3*p[4]
 end
 
 local function complexBezier(self: Bezier, t: number): Vector3
-	assert(t >= 0 and t <= 1, "0 <= t <= 1 False")
 	local n = self.Len
 	local nf = getFactorial(n)
 
