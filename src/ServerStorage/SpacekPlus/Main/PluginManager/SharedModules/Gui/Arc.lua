@@ -41,10 +41,15 @@ function Arc.new(inputSink, maid, gui)
             self:SetRotation(rotation)
         end)
 
-        inputSink.MouseButton1Up:Once(function()
+        local leaveEvent, buttonEvent
+        local function ended()
             inputSink.Visible = false
             event:Disconnect()
-        end)
+            buttonEvent:Disconnect()
+            leaveEvent:Disconnect()
+        end
+        leaveEvent = inputSink.MouseLeave:Once(ended)
+        buttonEvent = inputSink.MouseButton1Up:Once(ended)
     end
     maid:GiveTask(self.Button.MouseButton1Down:Connect(beginInput))
     maid:GiveTask(gui.Arc.MouseButton1Down:Connect(beginInput))
@@ -65,6 +70,7 @@ function Arc.new(inputSink, maid, gui)
 end
 
 function Arc:SetRotation(angle: number, override: boolean?)
+    --natural debounce
     if self.Rotation == angle and not override then
         return
     end
