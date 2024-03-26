@@ -35,9 +35,9 @@ function SpaceKSpline:SetSpline(model: Model?)
         return false
     end
 
-    local function changed(child)
+    local function changed(child: BasePart, added: boolean)
         if string.find(child.Name, "Curve") then
-            self.Changed:Fire()
+            self.Changed:Fire(added)
 
             if self.Maid.LastMoved then
                 self.Maid.LastMoved:Disconnect()
@@ -55,7 +55,9 @@ function SpaceKSpline:SetSpline(model: Model?)
     end
 
     self.Maid:DoCleaning()
-    self.Maid:GiveTask(model.ChildAdded:Connect(changed))
+    self.Maid:GiveTask(model.ChildAdded:Connect(function(child)
+        changed(child, true)
+    end))
     self.Maid:GiveTask(model.ChildRemoved:Connect(changed))
 
     local curve1 = model:FindFirstChild("Curve1")
