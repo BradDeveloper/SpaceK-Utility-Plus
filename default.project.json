@@ -1,6 +1,5 @@
 {
     "name": "SpacekPlus",
-    "servePlaceIds": [13157330031],
     "tree": {
         "$className": "DataModel",
         "ServerStorage": {
