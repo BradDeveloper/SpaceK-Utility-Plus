@@ -135,7 +135,7 @@ function Slider:SetValue(value: number, override: boolean)
     self.Gui.Value.Text = string.format("%0.3f", value)
 
     --Fill Line
-    local fillAlpha = math.clamp(-0.5 + (0.5 + 0.5) * alpha, -0.5, 0.5)
+    local fillAlpha = math.clamp(0.5 * alpha, -0.5, 0.5)
     self.Gui.Fill.Gradient.Offset = Vector2.new(fillAlpha, 0)
 
     self.Changed:Fire()
